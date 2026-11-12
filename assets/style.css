@@ -32,6 +32,7 @@ p{margin-bottom:1em}
 .nav{display:flex;gap:1.4rem;align-items:center}
 .nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.94rem}
 .nav a:hover{color:var(--green-2)}
+.nav a.btn,.nav a.btn:hover{color:#fff}
 @media (max-width:720px){.nav a:not(.btn){display:none}}
 
 /* buttons */
