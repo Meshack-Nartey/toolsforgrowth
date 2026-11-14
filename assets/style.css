@@ -127,3 +127,54 @@ details p{margin:.75rem 0 0;color:var(--muted)}
   .buy-bar strong{font-family:InterDisplay,Inter;color:var(--green);font-size:1.3rem}
   body.has-bar{padding-bottom:76px}
 }
+
+/* ===== Motion & modern polish ===== */
+html{scroll-behavior:smooth}
+.site-header{transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease}
+.site-header.scrolled{background:rgba(255,255,255,.82);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);box-shadow:0 1px 0 rgba(15,61,46,.08),0 8px 24px rgba(15,61,46,.06)}
+.btn{transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,61,46,.18)}
+.btn:active{transform:translateY(0)}
+.card{transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,61,46,.12)}
+.product-card img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.product-card:hover img{transform:scale(1.04)}
+.product-card{overflow:hidden}
+.shot img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.shot:hover img{transform:scale(1.02) rotate(-.4deg)}
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(127,211,168,.35),rgba(127,211,168,0) 70%);animation:float 12s ease-in-out infinite;pointer-events:none}
+.hero::after{content:"";position:absolute;width:420px;height:420px;left:-160px;bottom:-200px;border-radius:50%;background:radial-gradient(circle,rgba(244,201,93,.25),rgba(244,201,93,0) 70%);animation:float 14s ease-in-out infinite reverse;pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.hl{background:linear-gradient(90deg,#0F3D2E,#2f8a63);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,25px)}}
+.hero h1,.hero .lead,.hero .cta-row,.hero .kicker,.hero .shot{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .kicker{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero .lead{animation-delay:.3s}.hero .cta-row{animation-delay:.45s}.hero .shot{animation-delay:.35s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+html.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+html.js .rv.in{opacity:1;transform:none}
+.hero .rv{opacity:1!important;transform:none!important}
+
+/* ===== Intro splash ===== */
+#intro{position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 30% 20%,#17573f 0%,#0F3D2E 55%,#0a2b20 100%);color:#fff;display:none;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity .7s ease, transform .7s ease}
+#intro.play{display:flex}
+#intro.out{opacity:0;transform:scale(1.04);pointer-events:none}
+body.intro-on{overflow:hidden}
+.intro-inner{padding:24px}
+.intro-mark{width:64px;height:64px;margin:0 auto 22px;display:block;animation:pop .7s cubic-bezier(.2,.9,.3,1.3) .1s both}
+.intro-line1{font-size:clamp(1.1rem,3.2vw,1.6rem);letter-spacing:.18em;text-transform:uppercase;color:#A8E6C4;margin:0;animation:rise .7s ease .35s both}
+.intro-line2{font-family:inherit;font-weight:800;font-size:clamp(2.4rem,8vw,5rem);line-height:1.1;margin:.3em 0 0;height:1.15em;overflow:hidden}
+.intro-rot{display:inline-grid}
+.intro-rot span{grid-area:1/1;opacity:0;animation:word 3.6s ease both}
+.intro-rot span:nth-child(1){animation-name:w1}
+.intro-rot span:nth-child(2){animation-name:w2;color:#F4C95D}
+.intro-rot span:nth-child(3){animation-name:w3;color:#7FD3A8}
+@keyframes w1{0%,12%{opacity:0;transform:translateY(60%)}20%,38%{opacity:1;transform:none}45%,100%{opacity:0;transform:translateY(-60%)}}
+@keyframes w2{0%,42%{opacity:0;transform:translateY(60%)}50%,62%{opacity:1;transform:none}69%,100%{opacity:0;transform:translateY(-60%)}}
+@keyframes w3{0%,66%{opacity:0;transform:translateY(60%)}74%,100%{opacity:1;transform:none}}
+.intro-brand{margin:1.6rem 0 0;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.75);animation:rise .7s ease 2.3s both}
+.intro-skip{position:absolute;right:20px;bottom:20px;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-size:.85rem;cursor:pointer;opacity:.8}
+.intro-skip:hover{opacity:1;border-color:#fff}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}#intro{display:none!important}}
+body.intro-on .hero h1,body.intro-on .hero .lead,body.intro-on .hero .cta-row,body.intro-on .hero .kicker,body.intro-on .hero .shot{animation-play-state:paused}
